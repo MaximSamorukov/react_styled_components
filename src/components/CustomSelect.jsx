@@ -13,19 +13,28 @@ const CustomSelect = styled(Select).attrs({
       border: 'none',
       boxShadow: 'var(--shadow)',
       height: '50px',
-      marginTop: '30px',
     }),
     option: (provided, state) => ({
       ...provided,
       cursor: 'pointer',
       color: state.isFocused ? 'var(--colors-text)' : 'var(--colors-text)',
-      backgroundColor: state.isFocused ? 'var(--colors-bg)' : 'var(--colors-ui-base)',
+      backgroundColor: state.isFocused ? 'var(--colors-input)' : 'var(--colors-ui-base)',
     }),
     singleValue: (provided) => ({
       ...provided,
       color: 'var(--colors-input)',
     }),
+    menu: (provided) => ({
+      ...provided,
+      backgroundColor: 'var(--colors-ui-base)',
+    }),
   }
-})``;
+})`
+  width: 250px;
+
+  @media(max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 export default CustomSelect
