@@ -10,4 +10,4 @@ export const searchByCountryName = (name) => COUNTRY_BY_NAME + name;
 
 export const searchByCode = (code) => COUNTRY_BY_CODE + '/' + code;
 
-export const searchByListOfCodes = (codes) => COUNTRY_BY_CODE + '?codes=' + codes.join(',');
+export const searchByListOfCodes = (codes) => COUNTRY_BY_CODE + '?codes=' + codes;
