@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Controls from "../components/Controls";
 import List from '../components/List';
 import { Card } from '../components/Card';
 
 function HomePage({ countries }) {
+  const [filteredCountries, setFilteredCountries] = useState(countries);
   const navigate = useNavigate();
+
   return (
     <>
-      <Controls />
+      <Controls countries={countries} setFilteredCountries={setFilteredCountries} />
         <List>
-          {countries.map((i, ind) => (
+          {filteredCountries.map((i, ind) => (
             <Card
               key={i.name.official + String(ind)}
               img={i.flags.png}

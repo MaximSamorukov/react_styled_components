@@ -13,8 +13,12 @@ const options = [
     label: 'Asia',
   },
   {
-    value: 'America',
-    label: 'America',
+    value: 'Antarctic',
+    label: 'Antarctic',
+  },
+  {
+    value: 'Americas',
+    label: 'Americas',
   },
   {
     value: 'Europe',
@@ -38,9 +42,30 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Controls() {
+export default function Controls({ countries, setFilteredCountries }) {
   const [search, setSearch] = useState('');
   const [region, setRegion] = useState('');
+
+  useEffect(() => {
+    const filteredByRegion = countries.filter((i) => {
+      if (region?.value) {
+        return i.region === region.value;
+      } else {
+        return true;
+      }
+    });
+    const filteredBySearch = filteredByRegion.filter((i) => {
+      if (search) {
+        return i.name.official.toLowerCase().includes(search.toLowerCase());
+      } else {
+        return true;
+      }
+    });
+    setFilteredCountries(filteredBySearch);
+    // eslint-disable-next-line
+  }, [region, search]);
+
+
   return (
     <Wrapper>
       <Search search={search} setSearch={setSearch} />
